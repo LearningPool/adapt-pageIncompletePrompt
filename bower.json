@@ -5,7 +5,7 @@
         "url": "git://github.com/LearningPool/adapt-pageIncompletePrompt"
     },
     "framework": ">=3.3",
-    "version": "2.0.8",
+    "version": "2.0.9",
     "homepage": "https://github.com/LearningPool/adapt-pageIncompletePrompt",
     "issues": "https://github.com/LearningPool/adapt-pageIncompletePrompt/issues/",
     "displayName": "Page Incomplete Prompt",
