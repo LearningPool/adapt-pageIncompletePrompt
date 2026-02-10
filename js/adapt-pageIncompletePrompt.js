@@ -86,7 +86,17 @@ class PageIncompletePrompt extends Backbone.Controller {
     const id = routeArguments[0];
     if (id) {
       // Exit if on same page (e.g. if doing 'retry assessment')
-      if (id === location._currentId) return;
+this.href = /#/.test(window.location.href) ?
+window.location.href :
+window.location.href + '#';
+
+const id = routeArguments[0];
+if (id) {
+// Exit if on same page (e.g. if doing 'retry assessment')
+if (id === location._currentId) return;
+
+// Allow nav to assisted learning revision page
+if (routePath === 'assistedlearning') return;
 
       // Check if routing to current page child
       const model = data.findById(id);
