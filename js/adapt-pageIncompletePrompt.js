@@ -81,14 +81,6 @@ class PageIncompletePrompt extends Backbone.Controller {
 
     const id = routeArguments[0];
     if (id) {
-      
-    // Exit if on same page (e.g. if doing 'retry assessment')
-    this.href = /#/.test(window.location.href) ?
-    window.location.href :
-    window.location.href + '#';
-
-    const id = routeArguments[0];
-    if (id) {
       // Exit if on same page (e.g. if doing 'retry assessment')
       if (id === location._currentId) return;
 
@@ -98,7 +90,7 @@ class PageIncompletePrompt extends Backbone.Controller {
       // Check if routing to current page child
       const model = data.findById(id);
       const parent = model && model.findAncestor('contentObjects');
-      if (parent && (parent.get('_id') === this.pageModel.get('_id'))) return;
+      if (parent && parent.get('_id') === this.pageModel.get('_id')) return;
     }
 
     this.enableRouterNavigation(false);
