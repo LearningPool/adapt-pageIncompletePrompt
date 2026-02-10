@@ -75,28 +75,25 @@ class PageIncompletePrompt extends Backbone.Controller {
   onRouterNavigate(routeArguments) {
     if (!this.isEnabled() || this.pageModel.get('_isComplete')) return;
 
-    // Allow nav to assisted learning revision page
-    const routePath = routeArguments[0] || '';
-    if (routePath === 'assistedlearning') return;
-
     this.href = /#/.test(window.location.href) ?
       window.location.href :
       window.location.href + '#';
 
     const id = routeArguments[0];
     if (id) {
+      
+    // Exit if on same page (e.g. if doing 'retry assessment')
+    this.href = /#/.test(window.location.href) ?
+    window.location.href :
+    window.location.href + '#';
+
+    const id = routeArguments[0];
+    if (id) {
       // Exit if on same page (e.g. if doing 'retry assessment')
-this.href = /#/.test(window.location.href) ?
-window.location.href :
-window.location.href + '#';
+      if (id === location._currentId) return;
 
-const id = routeArguments[0];
-if (id) {
-// Exit if on same page (e.g. if doing 'retry assessment')
-if (id === location._currentId) return;
-
-// Allow nav to assisted learning revision page
-if (routePath === 'assistedlearning') return;
+      // Allow nav to assisted learning revision page
+      if (routePath === 'assistedlearning') return;
 
       // Check if routing to current page child
       const model = data.findById(id);
